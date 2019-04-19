@@ -17,90 +17,6 @@
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-
-<!--         
-            // // Start with first item.
-            // let counter = 1;
-
-            // // Load 20 items at a time.
-            // const quantity = 20;
-
-            // // When DOM loads, render the first 20 items.
-            // document.addEventListener('DOMContentLoaded', load);
-
-            // // If scrolled to bottom, load 20 more items.
-            // window.onscroll = () => {
-            //     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            //         load();
-            //     }
-            // };
-
-            // // Load next set of items. 
-            // /*function load() {
-
-            //     // Set start and end item numbers and update counter.
-            //     const start = counter;
-            //     const end = start + quantity -1;
-            //     counter = end + 1;
-
-            //     // Open new request to get more items.
-            //     const request = new XMLHttpRequest();
-            //     request.open('POST', )
-            // }*/
-
-            // // Add a new item with given contents to the DOM.
-            // function add_item(contents) {
-                
-            //     // Create new item.
-            //     const item = document.createElement('div');
-            //     item.className = 'item';
-            //     item.innerHTML = contents;
-
-            //     // Add button to delete item.
-            //     const hide = document.createElement('button');
-            //     hide.className = 'hide';
-            //     hide.innerHTML = 'Delete';
-            //     item.append(hide);
-
-            //     // When 'delete' button is clicked, remove the item.
-            //     hide.onclick = function() {
-            //         this.parentElement.remove();
-            //     };
-
-            //     // Add item to the DOM.
-            //     document.querySelector('#items').append(item);
-            // };
-
-
-
-            // // PRACTICEPRACTICEPRACTICEPRACTICEPRACTICE //
-            // var $ = function (selector) {
-            //     return document.querySelector(selector);
-            // };
-
-            // var links = $('#links').getElementsByTagName('li');
-
-            // // For each <li> inside #links
-            // for (var i = 0; i < links.length; i++) {
-            //     var link = links[i];
-            //     link.onclick = dynamicEvent;
-            // }
-            
-            // function dynamicEvent() {
-            //     this.innerHTML = 'Dynamic event success!';
-            //     this.className += ' dynamic-success'
-            // }
-            
-            // // Create the new element
-            // var li = document.createElement('li');
-            // li.className = 'dynamic-link'; // Class name
-            // li.innerHTML = dynamicValue; // Text inside
-            // $('#links').appendChild(li); // Append it
-            // li.onclick = dynamicEvent; // Attach the event -->
-            
-            
-
-        
     </head>
     <body class="gray-background">
         <div class="title text-center my-auto ">
@@ -117,24 +33,10 @@
             </div>
             <div id="items">
                 <ul id="dynamic-list">
-                    <!-- <li class="dynamic-link">List item 1</li> -->
-                    <!-- <li class="dynamic-link">List item 2</li>
-                    <li class="dynamic-link">List item 3</li>
-                    <li class="dynamic-link">List item 4</li> -->
+
                 </ul>
             </div>
         </div>
-        <script>
-            function addItem(){
-                var ul = document.getElementById("dynamic-list");
-                var candidate = document.getElementById("candidate");
-                if (candidate.value != "") {
-                    var li = document.createElement("li");
-                    li.setAttribute('id',candidate.value);
-                    li.appendChild(document.createTextNode(candidate.value));
-                    ul.appendChild(li);
-                }
-            }
-        </script>
+        <script src="js/script.js"></script>
     </body>
 </html>
