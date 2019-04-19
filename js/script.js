@@ -1,6 +1,10 @@
+// When DOM loads, focus on input field
+document.addEventListener("DOMContentLoaded", focus);
+
 function addItem(){
+
     var ul = document.getElementById("dynamic-list");
-    var candidate = document.getElementById("candidate");
+    var candidate = document.getElementById("input-field");
 
     // Don't add item if input field is blank
     if (candidate.value != "") {
@@ -12,4 +16,22 @@ function addItem(){
 
     // Clear input field after adding item
     candidate.value = "";
+
+    // Re-focus on input field
+    document.getElementById("input-field").focus();
+}
+
+function focus() {
+    
+    // Put focus on input field
+    document.getElementById("input-field").focus();
+}
+
+function inputKeyPress(e) {
+    e=e || window.event;
+    var key = e.keyCode;
+    if (key == 13) {
+        addItem();
+    }
+
 }

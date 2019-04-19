@@ -24,9 +24,9 @@
         </div>
         <div class="container-fluid col-md-8">
             <div class="item-to-add">
-                <form>
+                <form onSubmit="return false;">
                     <div class="row">
-                        <input type="text" id="candidate" class="form-control col-md-10" placeholder="What needs to be done?"/>                        
+                        <input type="text" id="input-field" class="form-control col-md-10" placeholder="What needs to be done?" onkeypress="return inputKeyPress(event)">                        
                         <button class="btn btn-primary col-md-2" type="button" onclick="addItem()">Add</button>
                     </div>
                 </form>
