@@ -17,26 +17,33 @@
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+        <!-- Fontawesome Fonts -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <!-- Javascript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/script.js"></script>
+
     </head>
     <body class="gray-background">
-        <div class="title text-center my-auto ">
+        <div class="title text-center my-auto">
             <h1>To-Do List</h1>
         </div>
         <div class="container-fluid col-md-8">
             <div class="item-to-add">
                 <form onSubmit="return false;">
                     <div class="row">
-                        <input type="text" id="input-field" class="form-control col-md-10" placeholder="What needs to be done?" onkeypress="return inputKeyPress(event)">                        
-                        <button class="btn btn-primary col-md-2" type="button" onclick="addItem()">Add</button>
+                        <input type="text" id="task" autofocus class="form-control col-md-10 col-xs-8" placeholder="What needs to be done?" onkeypress="return inputKeyPress(event)">
+                        <button id="addbutton" class="btn btn-primary col-md-2 col-xs-4" type="button" onclick="addTask()">Add Task</button>
                     </div>
                 </form>
             </div>
-            <div id="items">
-                <ul id="dynamic-list">
+            <div id="tasklist">
+            </div>
+            <div id="filterbar">
 
-                </ul>
             </div>
         </div>
-        <script src="js/script.js"></script>
     </body>
 </html>

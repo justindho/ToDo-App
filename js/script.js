@@ -1,127 +1,73 @@
-// When DOM loads, focus on input field
-document.addEventListener("DOMContentLoaded", focus);
+document.addEventListener('DOMContentLoaded', () => {
 
-function addTask(){
+    // Create a tasklist in local storage if not already created.
+    // if (!localStorage.getItem('tasklist')) {
+    //     localStorage.setItem('tasklist', () => {
+    //         let ul = document.createElement('ul');
+    //     });
+    // }
 
-    var tasklist = document.getElementById("tasklist");
-    var candidate = document.getElementById("input-field");
+    // Variables for HTML elements
+    let tasklist = document.querySelector('#tasklist');
+    let form = document.querySelector('form');
+    let task = document.querySelector('#task');
 
-    // Don't add item if input field is blank
-    if (candidate.value != '') {
+    // By default, the 'add' button for a new task is disabled.
+    document.querySelector('#addbutton').disabled = true;
 
-        // Create a new div
-        var task = document.createElement('div');
-        task.className = 'task row';
-        task.setAttribute('id', candidate.value);
-        
-        // Create a new checkbox
-        const cb = document.createElement('input');
-        cb.type = 'checkbox';
-        cb.className = 'checkbox col-md-1';
-        task.append(cb);
-
-        // Create a new paragraph
-        const p = document.createElement('p');
-        p.className = 'col-md-9';
-        p.setAttribute('id', 'p' + candidate.value);
-        p.appendChild(document.createTextNode(candidate.value));
-        task.append(p);
-
-        // Create a delete button
-        const button = document.createElement('button');
-        button.className = 'fas fa-trash-alt col-md-2';
-        // button.className = 'trash col-md-2';
-        // button.innerHTML = 'delete';
-        button.setAttribute('id', candidate.value + 'trash');
-        task.append(button);
-
-        // When checkbox is clicked, change task to 'completed' status
-        cb.onclick = function(){
-            
-        //     // Strikethrough text
-        //     $(this).parent().wrap('<s>');
-        //     // $(this).parent().children('p').css('color', 'red');
-            $(this).parent().children('p').toggleClass('striked completed');
-        };
-
-        // $('cb').change(function(){
-        //     if ($('cb').prop('checked')){
-        //         $(this).parent().wrap('<s>');
-        //     };
-        // });
-
-        
-        
-        // When button is clicked, remove task.
-        button.onclick = function(){
-            this.parentElement.remove();
-        };
-    
-        // Add task to DOM.
-        document.querySelector('#tasklist').append(task);
-    }   
-
-    // Clear input field after adding item
-    candidate.value = "";
-
-    // Re-focus on input field
-    document.getElementById("input-field").focus();
-}
-
-function addFilterBar(){
-
-    // Create filter bar
-    const filterBar = document.createElement('div');
-    filterBar.className = 'filterbar';
-    // filterBar.innerHTML = // '# tasks' + ' left';
-
-    // Create filters
-    const allButton = document.createElement('button');
-    allButton.innerHTML = 'All';
-    const activeButton = document.createElement('button');
-    activeButton.innerHTML = 'Active';
-    const completedButton = document.createElement('button');
-    completedButton = 'Completed';
-
-    // When 'All' button is clicked, show all tasks
-    allButton.onclick = function(e) {
-        var x;
-        x = document.getElementsByClassName('task');
-
+    // Enable button only if the input field is not empty.
+    document.querySelector('#inputfield').onkeyup = () => {
+        if (document.querySelector('#inputfield').value.length > 0) {
+            document.querySelector('#addbutton').disabled = false;
+        } else {
+            document.querySelector('#addbutton').disabled = true;
+        }
     }
 
-    // When 'Active' button is clicked, show remaining tasks
+    // Listen for 'add task' button clicks.
+    form.addEventListener('submit', (event) => {
 
-
-    // When 'Completed' button is clicked, show completed tasks
-
-}
-
-function focus() {
-
-    // Put focus on input field
-    document.getElementById("input-field").focus();
-}
-
-function inputKeyPress(e){
-    e=e || window.event;
-    var key = e.keyCode;
-    if (key == 13) { // ENTER key has id = 13
-        addTask();
-    }
-}
-
-function removeTask(){
-
-    var parentDiv = document.getElementById('tasklist');
-    var candidate = document.getElementById('candidate');
-    var task = document.getElementById(candidate.value);
-
-    parentDiv.removeChild(task);
-}
-
-$(document).ready(function(){
-    $('.checkbox').click(function(){
-        $(this.parent().children('p').toggleClass('striked'));
+        // Prevent form submissions.
+        event.preventDefault();
+        
+        // Store new task in storage and reset 'new task' input field.
+        tasklist.innerHTML = '<li>' + task.value + '</li>';
+        store();
+        task.value = '';
     });
+
+    // 
+    tasklist.addEventListener('click', (event) => {
+        // Get task that was clicked on. If it's marked as complete, 
+        // save that info to local storage.
+        let t = event.target;
+        if (t.classList.contains('checked')) {
+            t.parentNode.removeChild(t);
+        }
+    });
+
+    function store() {
+        window.localStorage.myTasks = tasklist.innerHTML;
+    };
+
+    // Add new task to tasklist.
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        document.querySelector('#new-task').onsubmit = () => {
+
+            // Create a new task for the tasklist.
+            const li = document.createElement('li');
+            li.innerHTML = document.querySelector('#inputfield').value;
+
+            // Add new task to tasklist.
+            document.querySelector('#tasklist').append(li);
+
+            // Clear input field.
+            document.querySelector('#inputfield').value = '';
+
+            // Stop form from resubmitting.
+            // return false;
+        };
+    });
+
 });
