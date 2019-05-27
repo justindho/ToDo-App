@@ -18,32 +18,39 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 
-        <!-- Fontawesome Fonts -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-        <!-- Javascript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Javascript -->        
         <script src="js/script.js"></script>
 
     </head>
-    <body class="gray-background">
+    <body">
         <div class="title text-center my-auto">
             <h1>To-Do List</h1>
         </div>
         <div class="container-fluid col-md-8">
             <div class="item-to-add">
-                <form onSubmit="return false;">
+                <form>
                     <div class="row">
-                        <input type="text" id="task" autofocus class="form-control col-md-10 col-xs-8" placeholder="What needs to be done?" onkeypress="return inputKeyPress(event)">
-                        <button id="addbutton" class="btn btn-primary col-md-2 col-xs-4" type="button" onclick="addTask()">Add Task</button>
+                        <input type="text" id="task" autofocus class="form-control col-md-10 col-xs-8" placeholder="What needs to be done?">
+                        <button id="addbutton" class="btn btn-primary col-md-2 col-xs-4" type="button">Add Task</button>
                     </div>
                 </form>
             </div>
-            <div id="tasklist">
+            <div id="divtasklist">
+                <ul id="tasklist"></ul>
             </div>
             <div id="filterbar">
 
             </div>
         </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="/__/firebase/6.0.4/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+        <!-- Initialize Firebase -->
+        <script src="/__/firebase/init.js"></script>
+
     </body>
 </html>

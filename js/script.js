@@ -4,13 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let tasklist = document.querySelector('#tasklist');
     let form = document.querySelector('form');
     let task = document.querySelector('#task');
+    let addbutton = document.querySelector('#addbutton');
     
     /**
-     * When the 'add task' button is clicked, add the new task to 
+     * When the form is submitted, add the new task to 
      * local storage.
      */
     form.addEventListener('submit', (event) => {
-        // Prevent form submissions.
+        // Prevent default form submissions.
+        event.preventDefault();
+        
+        // Store new task in storage and reset 'new task' input field.
+        tasklist.innerHTML += '<li>' + task.value + '</li>';
+        store();
+        task.value = '';
+    });
+
+    /**
+     * Add a task to local storage when the 'add task' button is clicked.
+     */
+    addbutton.addEventListener('click', (event) => {
+        // Prevent default form submissions.
         event.preventDefault();
         
         // Store new task in storage and reset 'new task' input field.
