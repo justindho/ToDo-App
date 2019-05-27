@@ -1,14 +1,30 @@
+body {
+    background-color: #f5f5f5;
+}
+
 .checkbox {
     top: 50%;
     transform: translateY(-50%);
 }
 
-.completed {
-    
+.checked {
+    color: green;
 }
 
-.gray-background {
-    background-color: #f5f5f5;
+.checked:before {
+    content: "\2713";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.checked:hover {
+    text-decoration: none;
+}
+
+.checked:after {
+    content: "(remove)";
+    color: tomato;
+    text-align: right;
 }
 
 html, body {
@@ -41,13 +57,17 @@ html, body {
 .task > .checkbox {
     top: 50%;
     transform: translateY(-50%);
-    
+
 }
 
 .task > .trash {
     top: 50%;
     transform: translateY(-50%);
     float: right;
+}
+
+#tasklist {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .title {
@@ -60,11 +80,40 @@ html, body {
 }
 
 .trash{
-    color: red;
+    visibility: hidden;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+}
+
+ul > li {
+    color: #899098;
+    font-weight: normal;
+    border-bottom: 1px solid #cfcbcc;
+    line-height: 1.5;
+    padding: 8px 0;        
+}
+
+ul > li:before {
+    content: "\25A1";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+ul > li:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
+ul > li:last-child {
+    border-bottom: none;
 }
 
 @media (max-width: 350px) {
     :root {
-        
+
     }
 }
